@@ -1,0 +1,23 @@
+version: '3.9'
+
+services:
+  db:
+    image: mysql
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+  #    healthcheck:
+  #      test: [ "CMD", "mysqladmin" ,"ping", "-h", "localhost", "-uroot", "-proot" ]
+  #      interval: 5s
+  #      timeout: 5s
+  #      retries: 10
+
+  flyway:
+    image: boxfuse/flyway:5.2.4
+    command: -url=jdbc:mysql://db -schemas=university -user=root -password=root -connectRetries=50 migrate
+    volumes:
+      - ./src/main/resources/db/migration:/flyway/sql
+    depends_on:
+      - db
