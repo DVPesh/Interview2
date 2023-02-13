@@ -1,0 +1,36 @@
+<!doctype html>
+
+<html ng-app="student">
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.11/ngStorage.min.js"></script>
+    <script src="student.js"></script>
+</head>
+
+<body>
+
+<div class="container" ng-controller="studentController">
+    <h3>Изменение данных студента</h3>
+    <form class="form-row align-items-center" ng-submit="updateStudent()">
+        <div class="col-auto my-1">
+            <input type="text" class="form-control" id="name" ng-model="student.name"
+                   placeholder="Имя">
+        </div>
+        <div class="col-sm-3 my-1">
+            <input type="text" class="form-control" id="birthdate" ng-model="student.birthdate"
+                   placeholder="Дата рождения гггг-мм-дд">
+        </div>
+        <div class="col-auto my-1">
+            <button type="submit" class="btn btn-primary"><i class="fas fa-edit"></i></button>
+        </div>
+    </form>
+</div>
+</body>
+</html>
